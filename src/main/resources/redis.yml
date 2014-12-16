@@ -1,0 +1,8 @@
+#Sample Configuration
+redis:
+  endpoint:
+    host: localhost
+    port: 6379
+  minIdle: 10
+  maxIdle: 100
+  maxTotal: 25
