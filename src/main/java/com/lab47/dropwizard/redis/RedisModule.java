@@ -15,7 +15,7 @@ public class RedisModule extends AbstractModule {
     @Override
     protected void configure() {
     }
-    
+
     @Provides
     public JedisPool provideJedisPool(RedisManagedPool _pool) {
         return _pool.getPool();
@@ -27,7 +27,7 @@ public class RedisModule extends AbstractModule {
         if (null != pool) {
             return pool;
         }
-        
+
         synchronized (this) {
             if (null != pool) {
                 return pool;
@@ -38,8 +38,16 @@ public class RedisModule extends AbstractModule {
             poolConfig.setMaxIdle(conf.getMaxIdle());
             poolConfig.setMaxTotal(conf.getMaxTotal());
 
+            poolConfig.setTestOnBorrow(true);
+            poolConfig.setTestOnReturn(true);
+            poolConfig.setTestWhileIdle(true);
+            poolConfig.setTimeBetweenEvictionRunsMillis(10000);
+            poolConfig.setNumTestsPerEvictionRun(10);
+            poolConfig.setBlockWhenExhausted(true);
+            poolConfig.setMaxWaitMillis(10000);
+
             HostAndPort ep = conf.getEndpoint();
-            JedisPool _pool = new JedisPool(poolConfig, ep.getHost(), ep.getPort());
+            JedisPool _pool = new JedisPool(poolConfig, ep.getHost(), ep.getPort(), 10000);
             pool = new RedisManagedPool(_pool);
 
             // Add to environment
