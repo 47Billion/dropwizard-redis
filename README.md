@@ -1,7 +1,8 @@
 dropwizard-redis
 ================
 
-TBF
+An awesome library to integrate the superfast redis with your project. It exposes a large number of configurations for tuning redis as per the need.
+
 
 ### Usage
 
