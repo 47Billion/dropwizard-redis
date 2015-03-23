@@ -38,13 +38,13 @@ public class RedisModule extends AbstractModule {
             poolConfig.setMaxIdle(conf.getMaxIdle());
             poolConfig.setMaxTotal(conf.getMaxTotal());
 
-            poolConfig.setTestOnBorrow(true);
-            poolConfig.setTestOnReturn(true);
-            poolConfig.setTestWhileIdle(true);
-            poolConfig.setTimeBetweenEvictionRunsMillis(10000);
-            poolConfig.setNumTestsPerEvictionRun(10);
-            poolConfig.setBlockWhenExhausted(true);
-            poolConfig.setMaxWaitMillis(10000);
+            poolConfig.setTestOnBorrow(conf.isTestOnBorrow());
+            poolConfig.setTestOnReturn(conf.isTestOnReturn());
+            poolConfig.setTestWhileIdle(conf.isTestWhileIdle());
+            poolConfig.setTimeBetweenEvictionRunsMillis(conf.getTimeBetweenEvictionRunsMillis());
+            poolConfig.setNumTestsPerEvictionRun(conf.getNumTestsPerEvictionRun());
+            poolConfig.setBlockWhenExhausted(conf.isBlockWhenExhausted());
+            poolConfig.setMaxWaitMillis(conf.getMaxWaitMillis());
 
             HostAndPort ep = conf.getEndpoint();
             JedisPool _pool = new JedisPool(poolConfig, ep.getHost(), ep.getPort(), 10000);

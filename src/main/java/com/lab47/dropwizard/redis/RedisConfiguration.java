@@ -55,6 +55,83 @@ public class RedisConfiguration {
     @Max(1024)
     private int maxTotal = 1024;
 
+    @JsonProperty
+    private boolean testOnBorrow;
+
+    @JsonProperty
+    private boolean testOnReturn;
+
+    @JsonProperty
+    private boolean testWhileIdle;
+
+    @JsonProperty
+    private long timeBetweenEvictionRunsMillis;
+
+    @JsonProperty
+    private int numTestsPerEvictionRun;
+
+    @JsonProperty
+    private boolean blockWhenExhausted;
+
+    @JsonProperty
+    private long maxWaitMillis;
+
+    public boolean isTestOnBorrow() {
+        return testOnBorrow;
+    }
+
+    public void setTestOnBorrow(boolean testOnBorrow) {
+        this.testOnBorrow = testOnBorrow;
+    }
+
+    public boolean isTestOnReturn() {
+        return testOnReturn;
+    }
+
+    public void setTestOnReturn(boolean testOnReturn) {
+        this.testOnReturn = testOnReturn;
+    }
+
+    public boolean isTestWhileIdle() {
+        return testWhileIdle;
+    }
+
+    public void setTestWhileIdle(boolean testWhileIdle) {
+        this.testWhileIdle = testWhileIdle;
+    }
+
+    public long getTimeBetweenEvictionRunsMillis() {
+        return timeBetweenEvictionRunsMillis;
+    }
+
+    public void setTimeBetweenEvictionRunsMillis(long timeBetweenEvictionRunsMillis) {
+        this.timeBetweenEvictionRunsMillis = timeBetweenEvictionRunsMillis;
+    }
+
+    public int getNumTestsPerEvictionRun() {
+        return numTestsPerEvictionRun;
+    }
+
+    public void setNumTestsPerEvictionRun(int numTestsPerEvictionRun) {
+        this.numTestsPerEvictionRun = numTestsPerEvictionRun;
+    }
+
+    public boolean isBlockWhenExhausted() {
+        return blockWhenExhausted;
+    }
+
+    public void setBlockWhenExhausted(boolean blockWhenExhausted) {
+        this.blockWhenExhausted = blockWhenExhausted;
+    }
+
+    public long getMaxWaitMillis() {
+        return maxWaitMillis;
+    }
+
+    public void setMaxWaitMillis(long maxWaitMillis) {
+        this.maxWaitMillis = maxWaitMillis;
+    }
+
     public HostAndPort getEndpoint() {
         return endpoint;
     }

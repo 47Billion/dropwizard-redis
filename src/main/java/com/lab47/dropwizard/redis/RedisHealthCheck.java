@@ -3,7 +3,6 @@ package com.lab47.dropwizard.redis;
 import redis.clients.jedis.JedisPool;
 
 import com.codahale.metrics.health.HealthCheck;
-import com.google.inject.Inject;
 
 public class RedisHealthCheck extends HealthCheck {
     private final JedisPool jedisPool;
